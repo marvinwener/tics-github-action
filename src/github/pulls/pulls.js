@@ -5,7 +5,11 @@ import fs from 'fs';
 import path from "node:path";
 
 //Octokit client is authenticated
-const octokit = new Octokit();
+const octokit = new Octokit({
+  request: {
+    agent: new ProxyAgent(),
+  },
+});
 const payload = JSON.parse(fs.readFileSync(process.env.GITHUB_EVENT_PATH, 'utf8'));
 const pullRequestNum = payload.pull_request ? payload.pull_request.number : "";
 
