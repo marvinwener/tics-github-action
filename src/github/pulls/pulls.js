@@ -3,6 +3,7 @@ import { githubConfig } from '../configuration.js';
 import core from '@actions/core';
 import fs from 'fs';
 import path from "node:path";
+import ProxyAgent from "proxy-agent";
 
 //Octokit client is authenticated
 const octokit = new Octokit({
